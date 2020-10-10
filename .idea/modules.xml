@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/Enterprise2.iml" filepath="$PROJECT_DIR$/Enterprise2.iml" />
+      <module fileurl="file://$PROJECT_DIR$/cards-dto/cards-dto.iml" filepath="$PROJECT_DIR$/cards-dto/cards-dto.iml" />
+      <module fileurl="file://$PROJECT_DIR$/user-collections/user-collections.iml" filepath="$PROJECT_DIR$/user-collections/user-collections.iml" />
+    </modules>
+  </component>
+</project>
