@@ -8,7 +8,7 @@ import org.springframework.stereotype.Repository
 import org.springframework.stereotype.Service
 import org.springframework.transaction.annotation.Transactional
 import org.enterprise2.cardgame.usercollections.CardService
-import javax.persistence.LockModetype
+import javax.persistence.LockModeType
 
 
 @Repository

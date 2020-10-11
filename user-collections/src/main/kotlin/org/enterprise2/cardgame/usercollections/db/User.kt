@@ -1,8 +1,15 @@
 package org.enterprise2.cardgame.usercollections.db
 
+import javax.persistence.*
+import javax.validation.constraints.Min
+import javax.validation.constraints.NotBlank
+
+
+@Entity
+@Table(name="user_data")
 class User (
 
-    @Entity
+    @get:Id
     @get:NotBlank
     var userId: String? = null,
 
@@ -12,6 +19,6 @@ class User (
     @get:Min(0)
     var cardPacks: Int = 0,
 
-    @get:OneTomany(mappedBy = "user", cascade = [(CascadeType.ALL)])
+    @get:OneToMany(mappedBy = "user", cascade = [(CascadeType.ALL)])
     var ownedcards : MutableList<CardCopy> = mutableListOf()
 )
