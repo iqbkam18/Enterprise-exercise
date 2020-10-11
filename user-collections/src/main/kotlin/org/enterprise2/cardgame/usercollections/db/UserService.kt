@@ -36,12 +36,12 @@ class UserService(
 
         val user = userRepository.findById(userId).orElse(null)
         if(user != null){
-            user.ownedcards.size
+            user.ownedCards.size
         }
         return user
     }
 
-    fun registernewUser(userId: String) : Boolean{
+    fun registerNewUser(userId: String) : Boolean{
 
         if(userRepository.existsById(userId)){
             return false
@@ -73,7 +73,7 @@ class UserService(
     }
 
     private fun validate(userId: String, cardId: String) {
-        validateuser(userId)
+        validateUser(userId)
         validateCard(cardId)
     }
 
@@ -106,9 +106,11 @@ class UserService(
     fun millCard(userId: String, cardId: String) {
         validate(userId, cardId)
 
-        val copy 0 user.ownedCards.find { it.cardId == cardId }
+        val user = userRepository.lockedFind(userId)!!
+
+        val copy = user.ownedCards.find { it.cardId == cardId }
         if(copy == null || copy.numberOfCopies == 0){
-            throw java.lang.IllegalArgumentException("User $userId does not own a copy of $cardId")
+            throw IllegalArgumentException("User $userId does not own a copy of $cardId")
         }
 
         copy.numberOfCopies--
@@ -123,20 +125,21 @@ class UserService(
 
         val user = userRepository.lockedFind(userId)!!
 
-        if(user.cardPacks <1){
-            throw java.lang.IllegalArgumentException("No pack to open")
+        if(user.cardPacks < 1){
+            throw IllegalArgumentException("No pack to open")
         }
 
         user.cardPacks--
 
-        val section = cardService.getRandomSelection(CARDS_PER_PACK)
+        val selection = cardService.getRandomSelection(CARDS_PER_PACK)
 
         val ids = mutableListOf<String>()
 
         selection.forEach {
-            addcard(user, it.cardId)
+            addCard(user, it.cardId)
             ids.add(it.cardId)
         }
+
         return ids
     }
 }
