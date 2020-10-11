@@ -13,4 +13,3 @@ create table user_data (
     coins integer not null check (coins>=0),
     primary key (user_id));
 
-alter table card_copy add constraint Fk
