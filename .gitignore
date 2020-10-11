@@ -1,0 +1,6 @@
+/.idea
+/target/
+/user-collections/target
+/cardsdto/target
+*/target
+*.iml

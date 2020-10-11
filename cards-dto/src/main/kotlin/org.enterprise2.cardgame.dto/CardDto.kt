@@ -1,6 +1,6 @@
 package org.enterprise2.cardgame.dto
 
-class CardDto {
+class CardDto (
 
     var cardId : String? = null,
 
@@ -11,4 +11,5 @@ class CardDto {
     var rarity : Rarity? = null,
 
     var imageId : String? = null
-}
+
+)

@@ -22,7 +22,7 @@ data class Collection (
         dto.rarityProbabilities.toMap()
     )
 
-    val cardsByRarity : Map<Rarity>, List<Card>> = cards.groupBy { it.rarity }
+    val cardsByRarity : Map<Rarity, List<Card>> = cards.groupBy { it.rarity }
 
     init {
             if(cards.isEmpty()){
